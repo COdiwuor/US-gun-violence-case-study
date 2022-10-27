@@ -37,12 +37,22 @@ Secondary stakeholders: Local communities
 Data Sources: Gun Violence Incidents in the United States from Emmanuel F. Werr: https://www.kaggle.com/datasets/emmanuelfwerr/gun-violence-incidents-in-the-usa <br>
 US Police Shootings from 2015- Sep 2022 from Ram Jas: https://www.kaggle.com/datasets/ramjasmaurya/us-police-shootings-from-20152022
 
-These datasets have 3 CSV files combined. The data also follows a ROCCC approach:
+The datasets have 3 CSV files, 24 columns, and 500,000 rows. The data also follows a ROCCC approach:
 
-The dataset has 18 CSV. The data also follows a ROCCC approach:
+* Reliability: The Gun Violence Incidents in the Unites States data is complete and accurate. It comes from the Gun Violence Archive (GVA). The GVA website maintains a database of known shootings in the United States, coming from law enforcement, media and government sources from all 50 states. The US Police shootings data was scraped from Wikipedia.
+* Original: GVA is an independent data collection and research group. Data on the US Police Shootings dataset gathered from The Counted, a website that tracks people killed by the police in the US.
+* Comprehensive: The data includes names, dates, manner of death, state where death occurred, city, address, number of people killed & injured, age, race, gender, whether victim was armed, and if there were signs of mental illness. 
+* Current: The data is current. It goes from 2013 to September 2022.
+* Cited: The data is cited from <a href="https://www.gunviolencearchive.org/">Gun Violence Archive</a>, and <a href="https://en.wikipedia.org/wiki/Lists_of_killings_by_law_enforcement_officers_in_the_United_States">Wikipedia</a>
 
-* Reliability: The data comes from the Gun Violence Archive 
-* Original:
-* Comprehensive:
-* Current:
-* Cited:
+## 3. Process
+
+Examining the data:
+
+```
+//insert data here
+```
+
+* The Gun Violence Incidents in the United States data covers data from 2013 - present day, while the US Police shootings covers data from 2015 - September 2022. This means that data from 2013-2014 will need to be factored out from the Gun Violence Incidents dataset so that the same years can be compared for both.
+
+* The 'state' category in the US Police shootings dataset is abbreviated, while the full name of the state is typed out in the Gun Violence Incidents dataset. This must be fixed so both are the same.
