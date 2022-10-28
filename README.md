@@ -39,20 +39,56 @@ US Police Shootings from 2015- Sep 2022 from Ram Jas: https://www.kaggle.com/dat
 
 The datasets have 3 CSV files, 24 columns, and 500,000 rows. The data also follows a ROCCC approach:
 
-* Reliability: The Gun Violence Incidents in the Unites States data is complete and accurate. It comes from the Gun Violence Archive (GVA). The GVA website maintains a database of known shootings in the United States, coming from law enforcement, media and government sources from all 50 states. The US Police shootings data was scraped from Wikipedia.
-* Original: GVA is an independent data collection and research group. Data on the US Police Shootings dataset gathered from The Counted, a website that tracks people killed by the police in the US.
-* Comprehensive: The data includes names, dates, manner of death, state where death occurred, city, address, number of people killed & injured, age, race, gender, whether victim was armed, and if there were signs of mental illness. 
-* Current: The data is current. It goes from 2013 to September 2022.
-* Cited: The data is cited from <a href="https://www.gunviolencearchive.org/">Gun Violence Archive</a>, and <a href="https://en.wikipedia.org/wiki/Lists_of_killings_by_law_enforcement_officers_in_the_United_States">Wikipedia</a>
+* **Reliability - MED:** The Gun Violence Incidents in the Unites States data is complete and accurate. It comes from the Gun Violence Archive (GVA). The GVA website maintains a database of known shootings in the United States, coming from law enforcement, media and government sources from all 50 states. The US Police shootings data was scraped from Wikipedia.
+* **Original - MED:** GVA is an independent data collection and research group. Data on the US Police Shootings dataset gathered from The Counted, a website that tracks people killed by the police in the US.
+* **Comprehensive - HIGH:** The data includes names, dates, manner of death, state where death occurred, city, address, number of people killed & injured, age, race, gender, whether victim was armed, and if there were signs of mental illness. 
+* **Current - HIGH:** The data is current. It goes from 2013 to September 2022.
+* **Cited - MED:** The data is cited from <a href="https://www.gunviolencearchive.org/">Gun Violence Archive</a>, and <a href="https://en.wikipedia.org/wiki/Lists_of_killings_by_law_enforcement_officers_in_the_United_States">Wikipedia</a>
+
+### Loading packages
+
+```
+library(tidyverse)
+library(lubridate) 
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(janitor)
+```
 
 ## 3. Process
+
+### Importing the datasets
+
+```
+# Read the dataframes
+all_incidents <- read_csv(all_incidents.csv)
+mass_shootings <- read_csv("mass_shootings.csv")
+police_shootings <- read_csv("police_shootings.csv")
+```
 
 Examining the data:
 
 ```
-//insert data here
+head(all_incidents)
+colnames(all_incidents)
+dim(all_incidents)
 ```
 
-* The Gun Violence Incidents in the United States data covers data from 2013 - present day, while the US Police shootings covers data from 2015 - September 2022. This means that data from 2013-2014 will need to be factored out from the Gun Violence Incidents dataset so that the same years can be compared for both.
+One change I would like to make is to remove the "incident_id" column since it will not be used in the analysis.
+
+```
+all_incidents_clean <- all_incidents %>% select(-c(incident_id))
+```
+
+The all_incidents dataset covers data from 2013 - present day, while the police_shootings dataset covers data from 2015 - September 2022. This means that data from 2013-2014 will need to be factored out from all_incidents so that the same years can be compared.
+
+```
+# removing 2013-2014
+# possible answer
+Use format():
+
+df <- df[format(df$date,'%Y') != "2017", ]
+```
 
 * The 'state' category in the US Police shootings dataset is abbreviated, while the full name of the state is typed out in the Gun Violence Incidents dataset. This must be fixed so both are the same.
