@@ -40,7 +40,7 @@ US Police Shootings from 2015- Sep 2022 from Ram Jas: https://www.kaggle.com/dat
 The datasets have 3 CSV files, 24 columns, and 500,000 rows. The data also follows a ROCCC approach:
 
 * **Reliability - MED:** The Gun Violence Incidents in the Unites States data is complete and accurate. It comes from the Gun Violence Archive (GVA). The GVA website maintains a database of known shootings in the United States, coming from law enforcement, media and government sources from all 50 states. The US Police shootings data was scraped from Wikipedia.
-* **Original - MED:** GVA is an independent data collection and research group. Data on the US Police Shootings dataset gathered from The Counted, a website that tracks people killed by the police in the US.
+* **Original - MED:** GVA is an independent data collection and research group. Data on the US Police Shootings dataset gathered from The Counted, a website that tracks the number of people killed by police in the US.
 * **Comprehensive - HIGH:** The data includes names, dates, manner of death, state where death occurred, city, address, number of people killed & injured, age, race, gender, whether victim was armed, and if there were signs of mental illness. 
 * **Current - HIGH:** The data is current. It goes from 2013 to September 2022.
 * **Cited - MED:** The data is cited from <a href="https://www.gunviolencearchive.org/">Gun Violence Archive</a>, and <a href="https://en.wikipedia.org/wiki/Lists_of_killings_by_law_enforcement_officers_in_the_United_States">Wikipedia</a>
@@ -75,7 +75,7 @@ colnames(all_incidents)
 dim(all_incidents)
 ```
 
-One change I would like to make is to remove the "incident_id" column since it will not be used in the analysis.
+First, I will remove the "incident_id" column since it will not be used in the analysis.
 
 ```
 all_incidents_clean <- all_incidents %>% select(-c(incident_id))
@@ -84,11 +84,80 @@ all_incidents_clean <- all_incidents %>% select(-c(incident_id))
 The all_incidents dataset covers data from 2013 - present day, while the police_shootings dataset covers data from 2015 - September 2022. This means that data from 2013-2014 will need to be factored out from all_incidents so that the same years can be compared.
 
 ```
-# removing 2013-2014
-# possible answer
-Use format():
-
-df <- df[format(df$date,'%Y') != "2017", ]
+# removing years 2013-2014
+all_incidents_new <- all_incidents_clean %>% filter(date <= "2014-12-31")
 ```
 
-* The 'state' category in the US Police shootings dataset is abbreviated, while the full name of the state is typed out in the Gun Violence Incidents dataset. This must be fixed so both are the same.
+Let's confirm that the years 2013-2014 were removed by checking the end of the dataframe.
+
+```
+tail(all_incidents_new)
+```
+
+```
+# A tibble: 6 × 6
+  date       state      city          address           n_kil…¹ n_inj…²
+  <date>     <chr>      <chr>         <chr>               <dbl>   <dbl>
+1 2015-01-01 Florida    Alachua       7108 NW 92nd Pla…       0       0
+2 2015-01-01 New Jersey Jersey City   Virginia Avenue         0       3
+3 2015-01-01 New York   Staten Island 1307 Arthur Kill…       0       2
+4 2015-01-01 Michigan   Saint Joseph  396 Upton Drive         1       0
+5 2015-01-01 New York   Rochester     402 West Ridge R…       0       1
+6 2015-01-01 Ohio       Lorain        2217 East 28th St       0       3
+```
+
+Now that the correct years for both datasets have been verified, the next step is fixing the 'state' categories. The 'state' category in the police_shootings dataset is abbreviated, while the full name of the state is spelled out in the all_incidents_new and mass_shootings datasets. This must be fixed so the state formats are all the same.
+
+```
+head(all_incidents_new)
+
+# A tibble: 6 × 6
+  date       state          city        address         n_kil…¹ n_inj…²
+  <date>     <chr>          <chr>       <chr>             <dbl>   <dbl>
+1 2022-05-28 Arkansas       Little Rock W 9th St and B…       0       1
+2 2022-05-28 Colorado       Denver      3300 block of …       0       1
+3 2022-05-28 Missouri       Saint Louis Page Blvd and …       0       1
+4 2022-05-28 South Carolina Florence    Old River Rd          0       2
+5 2022-05-28 California     Carmichael  4400 block of …       1       0
+6 2022-05-28 Kentucky       Louisville  400 block of M…       0       1
+```
+
+```
+head(police_shootings)
+
+# A tibble: 6 × 17
+     id name    date       manne…¹ armed   age gender race  city  state
+  <dbl> <chr>   <date>     <chr>   <chr> <dbl> <chr>  <chr> <chr> <chr>
+1     1 Tim El… 2015-01-02 shot    gun      53 M      A     Shel… WA   
+2     2 Lewis … 2015-01-02 shot    gun      47 M      W     Aloha OR   
+3     3 John P… 2015-01-03 shot a… unar…    23 M      H     Wich… KS   
+4     4 Matthe… 2015-01-04 shot    toy …    32 M      W     San … CA   
+5     5 Michae… 2015-01-04 shot    nail…    39 M      H     Evans CO   
+6     6 Kennet… 2015-01-04 shot    gun      18 M      W     Guth… OK 
+```
+
+```
+head(mass_shootings)
+
+# A tibble: 6 × 7
+  `Incident ID` `Incident Date`   State City …¹ Address # Kil…² # Inj…³
+          <dbl> <chr>             <chr> <chr>   <chr>     <dbl>   <dbl>
+1        271363 December 29, 2014 Loui… New Or… Poydra…       0       4
+2        269679 December 27, 2014 Cali… Los An… 8800 b…       1       3
+3        270036 December 27, 2014 Cali… Sacram… 4000 b…       0       4
+4        269167 December 26, 2014 Illi… East S… 2500 b…       1       3
+5        268598 December 24, 2014 Miss… Saint … 18th a…       1       3
+6        267792 December 23, 2014 Kent… Winche… 260 Ox…       1       3
+```
+
+I will use the built in state.abb and match functions to achieve this:
+
+```
+# change all states into their abbreviations 
+
+all_incidents_new$state <- state.abb[match(all_incidents_new$state, state.name)]
+
+mass_shootings$State <- state.abb[match(mass_shootings$State, state.name)]
+```
+
+** Next is removing null values, unnecessary columns **
