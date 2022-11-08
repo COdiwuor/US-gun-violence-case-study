@@ -73,12 +73,29 @@ Examining the data:
 head(all_incidents)
 colnames(all_incidents)
 dim(all_incidents)
+
+head(mass_shootings)
+colnames(mass_shootings)
+dim(mass_shootings)
+
+head(police_shootings)
+colnames(police_shootings)
+dim(police_shootings)
 ```
 
-First, I will remove the "incident_id" column since it will not be used in the analysis.
+Removing columns that will not be used in the analysis:
 
 ```
 all_incidents_clean <- all_incidents %>% select(-c(incident_id))
+police_shootings_clean <- police_shootings %>% select(-c(id, name))
+mass_shootings_clean <- mass_shootings %>% select(-c('Incident ID', Address))
+```
+Removing null values from columns in each dataset:
+
+```
+all_incidents_new <- na.omit(all_incidents_new)
+mass_shootings_clean <- na.omit(mass_shootings_clean)
+police_shootings_clean <- na.omit(police_shootings_clean)
 ```
 
 The all_incidents dataset covers data from 2013 - present day, while the police_shootings dataset covers data from 2015 - September 2022. This means that data from 2013-2014 will need to be factored out from all_incidents so that the same years can be compared.
@@ -160,4 +177,49 @@ all_incidents_new$state <- state.abb[match(all_incidents_new$state, state.name)]
 mass_shootings$State <- state.abb[match(mass_shootings$State, state.name)]
 ```
 
-** Next is removing null values, unnecessary columns **
+```
+head(all_incidents_new)
+
+# A tibble: 6 × 6
+  date       state city        address                  n_kil…¹ n_inj…²
+  <date>     <chr> <chr>       <chr>                      <dbl>   <dbl>
+1 2022-05-28 AR    Little Rock W 9th St and Broadway St       0       1
+2 2022-05-28 CO    Denver      3300 block of Clay St          0       1
+3 2022-05-28 MO    Saint Louis Page Blvd and Vandevent…       0       1
+4 2022-05-28 SC    Florence    Old River Rd                   0       2
+5 2022-05-28 CA    Carmichael  4400 block of Manzanita…       1       0
+6 2022-05-28 KY    Louisville  400 block of M St              0       1
+```
+
+```
+head(police_shootings_clean)
+
+# A tibble: 6 × 15
+  date       manner_of_d…¹ armed   age gender race  city  state signs…²
+  <date>     <chr>         <chr> <dbl> <chr>  <chr> <chr> <chr> <lgl>  
+1 2015-01-02 shot          gun      53 M      A     Shel… WA    TRUE   
+2 2015-01-02 shot          gun      47 M      W     Aloha OR    FALSE  
+3 2015-01-03 shot and Tas… unar…    23 M      H     Wich… KS    FALSE  
+4 2015-01-04 shot          toy …    32 M      W     San … CA    TRUE   
+5 2015-01-04 shot          nail…    39 M      H     Evans CO    FALSE  
+6 2015-01-04 shot          gun      18 M      W     Guth… OK    FALSE  
+```
+
+```
+head(mass_shootings_clean)
+
+# A tibble: 6 × 6
+  `Incident Date`   State `City Or County` `# Killed` `# Injured` state
+  <chr>             <chr> <chr>                 <dbl>       <dbl> <chr>
+1 December 29, 2014 LA    New Orleans               0           4 LA   
+2 December 27, 2014 CA    Los Angeles               1           3 CA   
+3 December 27, 2014 CA    Sacramento                0           4 CA   
+4 December 26, 2014 IL    East St. Louis            1           3 IL   
+5 December 24, 2014 MO    Saint Louis               1           3 MO   
+6 December 23, 2014 KY    Winchester                1           3 KY  
+```
+** Next is changing St. to Saint in cities **
+potential issues:
+fort worth, saint paul, saint louis, fort wayne, st petersburg, port st lucie, fort collins, 
+
+## 4. Analyze
