@@ -228,3 +228,13 @@ fort worth, saint paul, saint louis, fort wayne, st petersburg, port st lucie, f
 
 ### Summary:
 
+Check the number of total gun-related deaths per state in the US. 
+
+``` 
+ggplot(data=all_incidents_new, aes(x=state, y=n_killed)) + geom_bar(stat="identity", fill="black", color="darkred") + labs(title="Gun-related Deaths per State") + theme(axis.text.y=element_text(hjust=1, size = 8)) + coord_flip()
+```
+<br>
+
+![DeathsbyState](https://user-images.githubusercontent.com/77591203/201796531-17d814ad-e648-41a1-ae18-02ecb0a734fd.png)
+
+The above visualization clearly depicts the number of people that died from gun violence in each state from 2015-2022. Texas, California, and Florida are leading the country when it comes to these types of deaths. The CSVG can use this information to strengthen their precense in these higher-risk states. By holding more rallies and events, the CSVG will gain a large number of supporters due to these communities being impacted by gun violence the most.
