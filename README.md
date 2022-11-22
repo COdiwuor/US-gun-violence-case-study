@@ -224,17 +224,31 @@ fort worth, saint paul, saint louis, fort wayne, st petersburg, port st lucie, f
 
 ## 4. Analyze
 
-- [Summary](#summary)
+- [Gun-related deaths:](#gun-related-deaths)
+- [Gun-related injuries:](#gun-related-injuries)
 
-### Summary:
+### Gun-related deaths:
 
 Check the number of total gun-related deaths per state in the US. 
 
 ``` 
-ggplot(data=all_incidents_new, aes(x=state, y=n_killed)) + geom_bar(stat="identity", fill="black", color="darkred") + labs(title="Gun-related Deaths per State") + theme(axis.text.y=element_text(hjust=1, size = 8)) + coord_flip()
+ggplot(data = all_incidents_new, aes(x = state, y = n_killed)) + geom_bar(stat = "identity", fill = "black", color = "darkred") + labs(title = "Gun-related Deaths per State") + theme(axis.text.y = element_text(hjust = 1, size = 8)) + coord_flip()
 ```
 <br>
 
 ![DeathsbyState](https://user-images.githubusercontent.com/77591203/201796531-17d814ad-e648-41a1-ae18-02ecb0a734fd.png)
 
 The above visualization clearly depicts the number of people that died from gun violence in each state from 2015-2022. Texas, California, and Florida are leading the country when it comes to these types of deaths. The CSVG can use this information to strengthen their precense in these higher-risk states. By holding more rallies and events, the CSVG will gain a large number of supporters due to these communities being impacted by gun violence the most.
+
+### Gun-related injuries:
+
+Check the number of total gun-related injuries per state in the US.
+
+```
+ggplot(data = all_incidents_new, aes(x = state, y = n_injured)) + geom_bar(stat = "identity", fill = "black", color = "darkred") + labs(title = "Gun-related Injuries per State") + theme(axis.text.x = element_text(angle = 90, hjust = 1, size = 8))
+```
+<br>
+
+![InjuriesbyState](https://user-images.githubusercontent.com/77591203/203421261-e3bfab49-a98d-4d2c-b62f-d4b66877c188.png)
+
+After inspecting the above graph it's clear that Illinois has the most gun-related injuries. Next is California, Texas, then Pennsylvania. We know from the first graph that California and Texas were high gun violence states. With the information from this injuries graph, we can see that Illinois and Pennsylvania also have a high number of gun violence incidents. This makes them great candidates for an increase in CSVG presence.
