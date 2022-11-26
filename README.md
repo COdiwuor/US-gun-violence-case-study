@@ -102,7 +102,7 @@ The all_incidents dataset covers data from 2013 - present day, while the police_
 
 ```
 # removing years 2013-2014
-all_incidents_new <- all_incidents_clean %>% filter(date <= "2014-12-31")
+all_incidents_new <- all_incidents_clean %>% filter(date >= "2014-12-31")
 ```
 
 Let's confirm that the years 2013-2014 were removed by checking the end of the dataframe.
