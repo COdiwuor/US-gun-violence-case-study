@@ -252,3 +252,14 @@ ggplot(data = all_incidents_new, aes(x = state, y = n_injured)) + geom_bar(stat 
 ![InjuriesbyState](https://user-images.githubusercontent.com/77591203/203421261-e3bfab49-a98d-4d2c-b62f-d4b66877c188.png)
 
 After inspecting the above graph it's clear that Illinois has the most gun-related injuries. Next is California, Texas, then Pennsylvania. We know from the first graph that California and Texas were high gun violence states. With the information from this injuries graph, we can see that Illinois and Pennsylvania also have a high number of gun violence incidents. This makes them great candidates for an increase in CSVG presence.
+
+### Gun related deaths per year:
+
+```
+ggplot(data = df, aes(x = year, y = n_killed)) + geom_bar(stat = "identity", fill = "red", color = "black") + labs(title = "Gun-related Deaths per Year")
+```
+<br>
+
+![DeathsperYear](https://user-images.githubusercontent.com/77591203/204143789-3df6d7e1-9b34-45fe-9846-d4c7f251e613.png)
+
+We can see from the ggplot() bar graph that there is an increase in the number of deaths each year, with the exception of 2018. This is concerning because more and more people are getting killed yearly as a result of gun violence. 
