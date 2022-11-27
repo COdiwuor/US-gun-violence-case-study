@@ -256,10 +256,10 @@ After inspecting the above graph it's clear that Illinois has the most gun-relat
 ### Gun related deaths per year:
 
 ```
-ggplot(data = df, aes(x = year, y = n_killed)) + geom_bar(stat = "identity", fill = "red", color = "black") + labs(title = "Gun-related Deaths per Year")
+ggplot(data = df, aes(x = year, y = n_killed, group = 1)) + geom_line(color = "red") + geom_point() + labs(title = "Gun-related Deaths per Year")
 ```
 <br>
 
-![DeathsperYear](https://user-images.githubusercontent.com/77591203/204143789-3df6d7e1-9b34-45fe-9846-d4c7f251e613.png)
+![DeathsperYear](https://user-images.githubusercontent.com/77591203/204145993-dae27e5c-6b73-45cb-91ff-6ca372b5745f.png)
 
-We can see from the ggplot() bar graph that there is an increase in the number of deaths each year, with the exception of 2018. This is concerning because more and more people are getting killed yearly as a result of gun violence. 
+We can see from the ggplot() line graph that there is an increase in the number of deaths each year, with the exception of 2018. This is concerning because more and more people are getting killed yearly as a result of gun violence. 
