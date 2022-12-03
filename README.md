@@ -226,6 +226,7 @@ fort worth, saint paul, saint louis, fort wayne, st petersburg, port st lucie, f
 
 - [Gun-related deaths:](#gun-related-deaths)
 - [Gun-related injuries:](#gun-related-injuries)
+- [Gun-related deaths per year:](#gun-related-injuries-per-year)
 
 ### Gun-related deaths:
 
@@ -263,3 +264,14 @@ ggplot(data = df, aes(x = year, y = n_killed, group = 1)) + geom_line(color = "r
 ![DeathsperYear](https://user-images.githubusercontent.com/77591203/204145993-dae27e5c-6b73-45cb-91ff-6ca372b5745f.png)
 
 We can see from the ggplot() line graph that there is an increase in the number of deaths each year, with the exception of 2018. This is concerning because more and more people are getting killed yearly as a result of gun violence. 
+
+### Gun related injuries per year:
+
+```
+ggplot(data = df2, aes(x = year, y = n_injured, group = 1)) + geom_line(color = "orange") + geom_point() + labs(title = "Gun-related Injuries per Year")
+```
+<br>
+
+![InjuriesperYear](https://user-images.githubusercontent.com/77591203/205464629-2538d15c-58cb-41e5-a361-f0856045ec87.png)
+
+From first glancing at this line graph, one can see that from 2015-2019 the number of injuries slightly increase each year. When it gets to 2020 and 2021, however, there is a huge increase in injuries. We can see from this that gun-related violence is only getting worse and worse as the years go by, just like it was depicted in the previous graph.
