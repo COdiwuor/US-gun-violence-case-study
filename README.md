@@ -275,3 +275,29 @@ ggplot(data = df2, aes(x = year, y = n_injured, group = 1)) + geom_line(color = 
 ![InjuriesperYear](https://user-images.githubusercontent.com/77591203/205464629-2538d15c-58cb-41e5-a361-f0856045ec87.png)
 
 From first glancing at this line graph, one can see that from 2015-2019 the number of injuries slightly increase each year. When it gets to 2020 and 2021, however, there is a huge increase in injuries. We can see from this that gun-related violence is only getting worse and worse as the years go by, just like it was depicted in the previous graph.
+
+Now let's explore the police_shootings dataset. To start off, let's see the breakdown of victims according to their race. 
+
+```
+police_shoot_race <- police_shootings_clean %>% drop_na(race) %>% group_by(race) %>% dplyr::summarise(count = n()) %>% arrange(desc(count))
+```
+
+```
+police_shoot_race$race <- factor(police_shoot_race$race, levels = unique(as.character(police_shoot_race$race)))
+```
+
+``` 
+ggplot(data = police_shoot_race, aes(x = race, y = count)) + geom_col(fill = 'brown') + labs(title = "Number of Victims of Police Shootings by Race since 2015", x = 'Race', y = 'Number of Shootings') + geom_text(aes(label = count), vjust = -.5)
+```
+<br>
+
+![](https://user-images.githubusercontent.com/77591203/208267634-97d41c3c-a4c6-41c7-9960-e1d56d73eb59.png)
+
+W = White B = Black H = Hispanic A = Asian N = Native American O = Other
+
+According to the data, the majority of lethal police shooting victims are white/caucasian. The next two with highest number of victims are blacks and hispanics. This is a valuable visual that the CSGV can use to gain the support of white, black, and hispanic community members.
+
+
+The CSVG is in favor of stricter mental health screenings for firearm purchases. The next visualization will allow us to see the percentage of victims that were mentally ill.
+
+
