@@ -226,7 +226,10 @@ fort worth, saint paul, saint louis, fort wayne, st petersburg, port st lucie, f
 
 - [Gun-related deaths:](#gun-related-deaths)
 - [Gun-related injuries:](#gun-related-injuries)
-- [Gun-related deaths per year:](#gun-related-injuries-per-year)
+- [Gun-related deaths per year:](#gun-related-deaths-per-year)
+- [Gun-related injuries per year:](#gun-related-injuries-per-year)
+- [Number of Victims of Police Shootings by Race since 2015:](#number-of-victims-of-police-shootings-by-race-since-2015)
+- [Percentages of Shootings by Mental Illness:](#percentages-of-shootings-by-mental-illness)
 
 ### Gun-related deaths:
 
@@ -276,6 +279,10 @@ ggplot(data = df2, aes(x = year, y = n_injured, group = 1)) + geom_line(color = 
 
 From first glancing at this line graph, one can see that from 2015-2019 the number of injuries slightly increase each year. When it gets to 2020 and 2021, however, there is a huge increase in injuries. We can see from this that gun-related violence is only getting worse and worse as the years go by, just like it was depicted in the previous graph.
 
+### Number of Victims of Police Shootings by Race since 2015
+
+<br>
+
 Now let's explore the police_shootings dataset. To start off, let's see the breakdown of victims according to their race. 
 
 ```
@@ -299,6 +306,8 @@ According to the data, the majority of lethal police shooting victims are white/
 
 
 The CSVG is in favor of stricter mental health screenings for firearm purchases. The next visualization will allow us to see the percentage of victims that were mentally ill.
+
+### Percentages of Shootings by Mental Illness
 
 ```
 pie(police_shoot_illness$percent, labels = police_shoot_illness$percent, main = 'Percentages of Shootings by Mental Illness', col = c('light blue', 'pink'))
