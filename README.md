@@ -300,4 +300,13 @@ According to the data, the majority of lethal police shooting victims are white/
 
 The CSVG is in favor of stricter mental health screenings for firearm purchases. The next visualization will allow us to see the percentage of victims that were mentally ill.
 
+```
+pie(police_shoot_illness$percent, labels = police_shoot_illness$percent, main = 'Percentages of Shootings by Mental Illness', col = c('light blue', 'pink'))
+legend('right', c("Not ill", "ill"), fill = col)
+```
+
+![](https://user-images.githubusercontent.com/77591203/208314431-192cbb9d-a2e6-4c97-b2c7-122977df5b1d.png)
+
+76% of victims were not mentally ill while 24% had signs of mental illness. 24% is an alarming number because it means that these people were able to gain access to guns.
+
 
