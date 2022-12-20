@@ -318,4 +318,24 @@ legend('right', c("Not ill", "ill"), fill = col)
 
 76% of victims were not mentally ill while 24% had signs of mental illness. 24% is an alarming number because it means that these people were able to gain access to guns.
 
+<br>
 
+```
+#Breakdown of victims by age group
+us_pol_age_brackets <- police_shootings_clean 
+%>% mutate(
+age_group = dplyr::case_when(
+ age >= 0 & age <= 20 ~ "0-20",
+ age >= 21 & age <= 40 ~ "21-40",
+ age >= 41 & age <= 60 ~ "41-60",
+ age >= 61 & age <= 80 ~ "61-80",
+ age >= 81 & age <=100 ~ "81-100"),
+ age_group = factor(age_group, levels = c("0-20", "21-40", "41-60", "61-80", "81-100")))
+ age_brackets <- us_pol_age_brackets %>% tabyl(age_group) %>% drop_na()
+ ggplot(data = age_brackets, aes(x = age_group, y = n)) + geom_col(fill = 'salmon') + labs(title = "Police Shooting Victims by Age Group Since 2015", x = 'Age Group', y = 'Number of Victims') + geom_text(aes(label = n), vjust = -.5)
+```
+<br>
+
+![](https://user-images.githubusercontent.com/77591203/208552837-a2dff19d-42b3-43fe-b388-3c054e6b782f.png)
+
+The age brackets of "21-40" and "41-60" have the highest number of fatal police shootings. This closely aligns with the information given by the Federal Bureau of Prisons through August 27 that shows the median age to be 36. 
