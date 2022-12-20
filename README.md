@@ -123,6 +123,8 @@ tail(all_incidents_new)
 6 2015-01-01 Ohio       Lorain        2217 East 28th St       0       3
 ```
 
+## 4: Analyze 
+
 Now that the correct years for both datasets have been verified, the next step is fixing the 'state' categories. The 'state' category in the police_shootings dataset is abbreviated, while the full name of the state is spelled out in the all_incidents_new and mass_shootings datasets. This must be fixed so the state formats are all the same.
 
 ```
@@ -222,7 +224,7 @@ head(mass_shootings_clean)
 potential issues:
 fort worth, saint paul, saint louis, fort wayne, st petersburg, port st lucie, fort collins, 
 
-## 4. Analyze
+## 5. Share
 
 - [Gun-related deaths:](#gun-related-deaths)
 - [Gun-related injuries:](#gun-related-injuries)
@@ -339,3 +341,7 @@ age_group = dplyr::case_when(
 ![](https://user-images.githubusercontent.com/77591203/208552837-a2dff19d-42b3-43fe-b388-3c054e6b782f.png)
 
 The age brackets of "21-40" and "41-60" have the highest number of fatal police shootings. This closely aligns with the information given by the Federal Bureau of Prisons through August 27 that shows the median age to be 36. 
+
+## 6. Act
+
+## Insights Summary:
