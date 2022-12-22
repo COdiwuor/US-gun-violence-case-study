@@ -18,16 +18,11 @@ _The case study follows the six step data analysis process:_
 
 ## Introduction
 
-The Coalition to Stop Gun Violence (CSGV) is a non-profit gun control advocacy organization that is opposed to gun violence. The CSGV was founded in 1974, making it the nation’s oldest gun violence prevention organization. The CSGV believes that gun violence should be rare and abnormal. They pursue the goal of ending gun violence through policy development, advocacy, community engagement, and effective training. Through a combination of evidence-based policy development and aggressive lobbying, the CSGV is leading the way forward in fighting for a safer and stronger America. The organization has nine areas of focus regarding issues and campaigns. This case study will focus on two of them: 
-
-1: Support for stricter mental health screening for firearm purchases. <br>
-2: Ban the private sale of guns by instituting universal background checks.
-
-Our analytics team has been asked to come up with strong, evidence-backed points that will assist the CSGV in gaining supporters.
+The Coalition to Stop Gun Violence (CSGV) is a non-profit gun control advocacy organization that is opposed to gun violence. The CSGV was founded in 1974, making it the nation’s oldest gun violence prevention organization. The CSGV believes that gun violence should be rare and abnormal. They pursue the goal of ending gun violence through policy development, advocacy, community engagement, and effective training. Through a combination of evidence-based policy development and aggressive lobbying, the CSGV is leading the way forward in fighting for a safer and stronger America. 
 
 ## 1. Ask
 
-**BUSINESS TASK: Analyze U.S gun violence data to create strong arguments that support the two areas of focus above for an upcoming campaign**
+**BUSINESS TASK: Our analytics team has been asked to come up with strong, evidence-backed points that will assist the CSGV in gaining supporters.**
 
 Primary stakeholders: Joshua Horwitz, executive director.
 
@@ -345,3 +340,15 @@ The age brackets of "21-40" and "41-60" have the highest number of fatal police 
 ## 6. Act
 
 ## Insights Summary:
+
+After analyzing the Gun Violence Incidents and US Police Shootings datasets I came up with **strong, evidence-backed points that will assist the CSGV in gaining supporters.**
+
+1. In the first visualization, we saw that Texas, California, and Florida had the highest number of gun-related deaths by a large margin. With this information, I recommend that the CSGV heavily increase their presence in these states. Doing this and showing the communities the data will lead to a large gain of supporters. 
+
+2. Gun-related injuries are most prevalent in California, Texas, and Pennsylvania. Similarly to the point above, the CSGV can increase their presence in these states to gain supporters.
+
+3. In the third visualization shown, we notice that the number of deaths per year is increasing at an alarming rate. This means that more and more people are getting killed yearly as a result of gun violence. This can be used as a focal point when doing presentations and rallies so that communities understand that gun violence is only getting worse as time goes on.
+
+4. When it comes to police shootings by race: caucasian, black and hispanic people get shot at the most. The CSGV can target these communities more than others in order to gain their support.
+
+5. I wanted to look at the percentage of shootings by mental illness because the CSGV is in favor of stricter mental health screenings for firearm purchases. After visualizing the data, it was discovered that 24% of victims had signs of mental illness. This is an area of concern because it shows that these people were able to get access to guns. The CSGV can show supporters at rallies that the number of incidents would decrease if there were more strict policies in place to obtain firearms. As a result, the increase in pressure from the public may convince lawmakers to implement policies to make it harder to get firearms for these individuals. 
