@@ -215,9 +215,6 @@ head(mass_shootings_clean)
 5 December 24, 2014 MO    Saint Louis               1           3 MO   
 6 December 23, 2014 KY    Winchester                1           3 KY  
 ```
-** Next is changing St. to Saint in cities **
-potential issues:
-fort worth, saint paul, saint louis, fort wayne, st petersburg, port st lucie, fort collins, 
 
 ## 5. Share
 
