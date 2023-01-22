@@ -224,6 +224,7 @@ head(mass_shootings_clean)
 - [Gun-related injuries per year:](#gun-related-injuries-per-year)
 - [Number of Victims of Police Shootings by Race since 2015:](#number-of-victims-of-police-shootings-by-race-since-2015)
 - [Percentages of Shootings by Mental Illness:](#percentages-of-shootings-by-mental-illness)
+- [Police Shooting Victims by Age Group Since 2015:](#police-shooting-victims-by-age-group-since-2015)
 
 ### Gun-related deaths:
 
@@ -238,6 +239,8 @@ ggplot(data = all_incidents_new, aes(x = state, y = n_killed)) + geom_bar(stat =
 
 The above visualization clearly depicts the number of people that died from gun violence in each state from 2015-2022. Texas, California, and Florida are leading the country when it comes to these types of deaths. The CSVG can use this information to strengthen their precense in these higher-risk states. By holding more rallies and events, the CSVG will gain a large number of supporters due to these communities being impacted by gun violence the most.
 
+Tableau Viz: https://public.tableau.com/app/profile/domingo.guzman/viz/GunViolenceCaseStudy/Sheet1
+
 ### Gun-related injuries:
 
 Check the number of total gun-related injuries per state in the US.
@@ -251,6 +254,8 @@ ggplot(data = all_incidents_new, aes(x = state, y = n_injured)) + geom_bar(stat 
 
 After inspecting the above graph it's clear that Illinois has the most gun-related injuries. Next is California, Texas, then Pennsylvania. We know from the first graph that California and Texas were high gun violence states. With the information from this injuries graph, we can see that Illinois and Pennsylvania also have a high number of gun violence incidents. This makes them great candidates for an increase in CSVG presence.
 
+Tableau Viz: https://public.tableau.com/app/profile/domingo.guzman/viz/USGunViolenceCaseStudy2/Sheet1
+
 ### Gun related deaths per year:
 
 ```
@@ -262,6 +267,8 @@ ggplot(data = df, aes(x = year, y = n_killed, group = 1)) + geom_line(color = "r
 
 We can see from the ggplot() line graph that there is an increase in the number of deaths each year, with the exception of 2018. This is concerning because more and more people are getting killed yearly as a result of gun violence. 
 
+Tableau Viz: https://public.tableau.com/app/profile/domingo.guzman/viz/USGunViolenceViz3/Sheet1
+
 ### Gun related injuries per year:
 
 ```
@@ -272,6 +279,8 @@ ggplot(data = df2, aes(x = year, y = n_injured, group = 1)) + geom_line(color = 
 ![InjuriesperYear](https://user-images.githubusercontent.com/77591203/205464629-2538d15c-58cb-41e5-a361-f0856045ec87.png)
 
 From first glancing at this line graph, one can see that from 2015-2019 the number of injuries slightly increase each year. When it gets to 2020 and 2021, however, there is a huge increase in injuries. We can see from this that gun-related violence is only getting worse and worse as the years go by, just like it was depicted in the previous graph.
+
+Tableau Viz: https://public.tableau.com/app/profile/domingo.guzman/viz/USGunViolenceCaseStudy4/Sheet1
 
 ### Number of Victims of Police Shootings by Race since 2015
 
@@ -298,6 +307,8 @@ W = White B = Black H = Hispanic A = Asian N = Native American O = Other
 
 According to the data, the majority of lethal police shooting victims are white/caucasian. The next two with highest number of victims are blacks and hispanics. This is a valuable visual that the CSGV can use to gain the support of white, black, and hispanic community members.
 
+Tableau Viz: https://public.tableau.com/app/profile/domingo.guzman/viz/USGunViolenceCaseStudy5/Sheet1
+
 
 The CSVG is in favor of stricter mental health screenings for firearm purchases. The next visualization will allow us to see the percentage of victims that were mentally ill.
 
@@ -312,10 +323,14 @@ legend('right', c("Not ill", "ill"), fill = col)
 
 76% of victims were not mentally ill while 24% had signs of mental illness. 24% is an alarming number because it means that these people were able to gain access to guns.
 
+Tableau Viz: https://public.tableau.com/app/profile/domingo.guzman/viz/USGunViolenceCaseStudy7/Sheet1
+
 <br>
 
+### Police Shooting Victims by Age Group Since 2015
+
 ```
-#Breakdown of victims by age group
+# Breakdown of victims by age group
 us_pol_age_brackets <- police_shootings_clean 
 %>% mutate(
 age_group = dplyr::case_when(
@@ -333,6 +348,16 @@ age_group = dplyr::case_when(
 ![](https://user-images.githubusercontent.com/77591203/208552837-a2dff19d-42b3-43fe-b388-3c054e6b782f.png)
 
 The age brackets of "21-40" and "41-60" have the highest number of fatal police shootings. This closely aligns with the information given by the Federal Bureau of Prisons through August 27 that shows the median age to be 36. 
+
+Tableau Viz: https://public.tableau.com/app/profile/domingo.guzman/viz/USGunViolenceCaseStudy6/Sheet1
+
+<br>
+
+### Tableau Dashboard
+
+![](https://user-images.githubusercontent.com/77591203/213924768-babe12d8-94dc-4516-bfb3-2fbcf7ae865a.png)
+
+Tableau Dashboard: https://public.tableau.com/app/profile/domingo.guzman/viz/dash_16740948361610/Dashboard1
 
 ## 6. Act
 
